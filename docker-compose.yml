@@ -6,6 +6,8 @@ services:
     ports:
       - 6001:6001
       - 8096:8096
+    networks:
+      - nginx_network
   nginx_manager:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
@@ -16,3 +18,8 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
