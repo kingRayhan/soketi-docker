@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  soketi:
+    image: quay.io/soketi/soketi:latest-16-alpine
+    ports:
+      - 6001
+      - 8096
+  nginx_manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '8001:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
