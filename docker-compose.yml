@@ -6,6 +6,8 @@ services:
     ports:
       - 6001:6001
       - 8096:8096
+    networks:
+      - nginx_network
   web:
     image: kingrayhan/hello-docker
     # ports:
