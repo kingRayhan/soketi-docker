@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  # soketi:
-  #   image: quay.io/soketi/soketi:latest-16-alpine
-  #   ports:
-  #     - 6001:6001
-  #     - 8096:8096
+  soketi:
+    image: quay.io/soketi/soketi:latest-16-alpine
+    ports:
+      - 6001:6001
+      - 8096:8096
   web:
     image: kingrayhan/hello-docker
     # ports:
@@ -20,8 +20,8 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - ./.docker-data/data:/data
+      - ./.docker-data/letsencrypt:/etc/letsencrypt
     networks:
       - nginx_network
 
